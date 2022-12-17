@@ -8,8 +8,10 @@ You can use it directly in your terminal. To get a view of the possible commands
 
 ## How does it work?
 It uses OpenAI to generate documentation automatically. That means you will need
-an OpenAI key to use this tool. To init tool, you can execute the following in your
-terminal:
+[an OpenAI key](https://beta.openai.com/) to use this tool - create an account if you 
+don't have it, click above right in your profile and in 'View API keys'. 
+
+To init tool, execute the following in your terminal:
 
 ```autoexplain set-key [OPENAI_KEY]```
 

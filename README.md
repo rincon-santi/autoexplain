@@ -38,4 +38,8 @@ You can contact the authors in the following ways:
 
 ## What license is it distributed under?
 This project is distributed under the GNU GENERAL PUBLIC LICENSE license. Read the 
-full text of the license in the file LICENSE.
+full text of the license in the file [LICENSE].
+
+## Special thanks
+Prompt generation for readme has been brought from [https://github.com/tom-doerr/codex-readme] 
+(MIT Licensed)

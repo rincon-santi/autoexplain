@@ -3,12 +3,17 @@
 Autoexplain is an open source tool that allows you to create documents automatically.
 
 ## How to use it?
-You can use it directly in your terminal:
-
+You can use it directly in your terminal. To get a view of the possible commands, use:
 ```autoexplain -h```
 
-## Why use it?
+## How does it work?
+It uses OpenAI to generate documentation automatically. That means you will need
+an OpenAI key to use this tool. To init tool, you can execute the following in your
+terminal:
 
+```autoexplain set-key [OPENAI_KEY]```
+
+## Why use it?
 It's an alternative to the traditional way of documenting your code, where you
 write down the documentation in a text file.
 
@@ -30,8 +35,5 @@ You can contact the authors in the following ways:
 - LinkedIn: https://www.linkedin.com/in/santiago-rincon-martinez/
 
 ## What license is it distributed under?
-This project is distributed under the  GNU GENERAL PUBLIC LICENSE license. Read the 
+This project is distributed under the GNU GENERAL PUBLIC LICENSE license. Read the 
 full text of the license in the file LICENSE.
-
-## Where can I find more information about the project?
-The project's website is located at https://github.com/rincon-santi/autoexplain.

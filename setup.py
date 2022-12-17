@@ -2,8 +2,9 @@ from setuptools import setup
 
 setup(
     name='autoexplain',
-    version='1.0.0',
+    version='1.0.2',
     description='Use OpenAI capabilities to smooth your document generation',
+    url='https://github.com/rincon-santi/autoexplain',
     author='Santiago Rincon Martinez',
     author_email='rincon.santi@gmail.com',
     packages=['src'],

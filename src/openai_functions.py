@@ -6,11 +6,11 @@ def _read_api_key():
     config.read('.aexconfig')
     return config
 
-def edit(about_this, output_path=None, model = "code-davinci-edit-001", temperature=0.5, silent=False):
+def edit(about_this, output_path=None, model = "code-davinci-edit-001", temperature=0.5, silent=False, stop='===================\n'):
     config = _read_api_key()
     openai.api_key = config['openai']['openai_key']
 
-    completions = openai.Edit.create(engine=model, input=about_this, instruction="Add a detailed paragraph at the top of the code describing what the whole code is doing, and add detailed comments explaining every class and function", temperature=temperature, top_p=0.2)
+    completions = openai.Edit.create(engine=model, input=about_this, instruction="Add a detailed paragraph at the top of the code describing what the whole code is doing, and add detailed comments explaining every class and function, including parameters received", temperature=temperature, top_p=0.2, stop=stop)
 
     text = completions.choices[0].text
     if output_path:

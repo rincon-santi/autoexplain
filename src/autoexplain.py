@@ -11,6 +11,8 @@ The code uses the following classes and functions:
 
     - add: This function is used to add documentation to one or more files.
 
+    - generate_readme: This function is used to generate a README.md file in the local folder.
+
     - set_key: This function is used to set the OpenAI key.
 """
 

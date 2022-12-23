@@ -1,5 +1,5 @@
 """
-This code is used to add documentation to one or more files. The code uses the OpenAI API to generate a summary of the code. The code is divided into two main parts:
+This code is used to add documentation to one or more files. The code uses the OpenAI API to generate a summary of the code. The code is divided into two main parts: 
 
     - The first part is the main function, which is used to parse the command line arguments and call the appropriate function.
 
@@ -7,13 +7,15 @@ This code is used to add documentation to one or more files. The code uses the O
 
 The code uses the following classes and functions:
 
-    - main: This function is used to parse the command line arguments and call the appropriate function.
+    - main: This function is used to parse the command line arguments and call the appropriate function. It receives no parameters.
 
-    - add: This function is used to add documentation to one or more files.
+    - add: This function is used to add documentation to one or more files. It receives the following parameters:
+        - args: This parameter is used to store the command line arguments.
 
-    - generate_readme: This function is used to generate a README.md file in the local folder.
+    - generate_readme: This function is used to generate a README.md file in the local folder. It receives no parameters.
 
-    - set_key: This function is used to set the OpenAI key.
+    - set_key: This function is used to set the OpenAI key. It receives the following parameters:
+        - args: This parameter is used to store the command line arguments.
 """
 
 import argparse

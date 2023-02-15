@@ -1,7 +1,7 @@
-from src.functions.openai_functions import edit, complete
-from src.constants.aexp_constants import NOT_INCLUDED_PREFIXES, NOT_INCLUDED_EXTENSIONS, FILES_NOT_TO_INCLUDE
-from src.utils.utils import is_file_staged
-from src.constants.prompts import GENERATE_UNITTEST_PROMPT
+from functions.openai_functions import edit, complete
+from constants.aexp_constants import NOT_INCLUDED_PREFIXES, NOT_INCLUDED_EXTENSIONS, FILES_NOT_TO_INCLUDE
+from utils.utils import is_file_staged
+from constants.prompts import GENERATE_UNITTEST_PROMPT
 import subprocess
 import configparser
 import os

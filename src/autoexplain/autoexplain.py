@@ -2,9 +2,7 @@
 # It is used to parse the command line arguments and call the appropriate function.
 
 import argparse
-import sys
-sys.path.insert(0, ".")
-from src.autoexplain.subcommands import add, set_key, generate_readme, generate_unittests
+from autoexplain.subcommands import add, set_key, generate_readme, generate_unittests
 from importlib.metadata import version
 
 

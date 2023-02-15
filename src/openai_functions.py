@@ -38,7 +38,7 @@ def edit(about_this, output_path=None, model = "code-davinci-edit-001", temperat
             print("\n-------------------{}-----------------\n\n".format(output_path))
             diff = difflib.unified_diff(about_this.splitlines(), text.splitlines())
             print('\n'.join(diff))
-            user_input = input("Save documentation result? [Y/n] ")
+            user_input = input("Save result? [Y/n] ")
             if user_input.lower() not in ["y", "yes", "", "Y"]:
                 return None
         with open(output_path, 'w') as f:
@@ -76,7 +76,7 @@ def complete(prompt, output_path=None, model = "code-davinci-001", temperature=0
                 print(generated)
                 answer = input("\n\nDo you want to save? [y/N] ")
                 if answer == '' or answer == 'n' or answer == 'N':
-                    print('\nThe generated README is not saved.')
+                    print('\nNot saved.')
                     answer = input("\n\nDo you want to generate another? [Y/n] ")
                     if answer == '' or answer == 'y' or answer == 'Y':
                         continue

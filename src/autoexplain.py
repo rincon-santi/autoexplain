@@ -21,7 +21,7 @@ The code uses the following classes and functions:
 import argparse
 import sys
 sys.path.insert(1,'.')
-from src.subcommands import add, set_key, generate_readme
+from src.subcommands import add, set_key, generate_readme, generate_unittests
 
 def main():
     """
@@ -36,6 +36,10 @@ def main():
     parser_add.add_argument("--no_stage", action="store_true", default=False, help="Don't stage modified files")
     parser_add.add_argument("--silent", action="store_true", default=False, help="Don't ask for confirmation")
 
+    parser_add = subparsers.add_parser("gen-unittests", help="Generate unittest for one or more code files")
+    parser_add.add_argument("files", nargs="+", help="Files to add documentation to")
+    parser_add.add_argument("--no_stage", action="store_true", default=False, help="Don't stage modified files")
+    parser_add.add_argument("--silent", action="store_true", default=False, help="Don't ask for confirmation")
 
     parser_set_key = subparsers.add_parser("set-key", help="Set OpenAI key")
     parser_set_key.add_argument("key", nargs=1, help="OpenAI key")
@@ -52,6 +56,9 @@ def main():
 
     if args.command == "gen-readme":
         generate_readme()
+
+    if args.command == "gen-unittests":
+        generate_unittests(args)
 
 
 if __name__ == "__main__":

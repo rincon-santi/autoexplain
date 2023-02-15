@@ -1,7 +1,7 @@
-from src.openai_functions import edit, complete
-from src.constants import NOT_INCLUDED_PREFIXES, NOT_INCLUDED_EXTENSIONS, FILES_NOT_TO_INCLUDE
-from src.utils import is_file_staged
-from prompting.prompts import GENERATE_UNITTEST_PROMPT
+from src.functions.openai_functions import edit, complete
+from src.constants.aexp_constants import NOT_INCLUDED_PREFIXES, NOT_INCLUDED_EXTENSIONS, FILES_NOT_TO_INCLUDE
+from src.utils.utils import is_file_staged
+from src.constants.prompts import GENERATE_UNITTEST_PROMPT
 import subprocess
 import configparser
 import os
@@ -49,7 +49,7 @@ def add(args):
     if not args.no_stage: # If the --no-stage flag is not passed, add the files to the staging area
         subprocess.run(["git", "add"]+files)
 
-def generate_readme():
+def generate_readme(output_file="README.md", silent=False):
     """
     This function is used to generate a readme file for the repository. It uses the openai API to generate a readme file
     """
@@ -90,36 +90,13 @@ def generate_readme():
         return input_prompt
 
     prompt = generate_prompt()
-    complete(prompt, output_path="README.md")
+    complete(prompt, output_path=output_file, silent=silent)
 
-def generate_unittests(args):
-    # Iterate over the list of modified files and pass each file to the edit function
-    def _conditions(filename, path): # This function is used to check if the file is to be included in the repository.
-        for extension in NOT_INCLUDED_EXTENSIONS:
-            if filename.endswith(extension):
-                return False
-        for prefix in NOT_INCLUDED_PREFIXES:
-            if filename.startswith(prefix):
-                return False
-        if is_file_staged(path+filename):
-            return False
-        return True
-
-    files = args.files # This is the list of files that are to be added to the repository
-    max_files = len(files)
-    pointer = 0
-    while pointer < max_files: # Iterate over the list of files
-        if os.path.isdir(files[pointer]):
-            included_files = [files[pointer]+file for file in os.listdir(files[pointer]) if _conditions(file, files[pointer])] # If the file is a directory, add all the files in the directory to the list of files to be added
-            files = files + included_files
-            max_files+=len(included_files)
-        else:
-            print("\nGenerating unittests for {}\n".format(files[pointer]))
-            with open(files[pointer], 'r') as f: # If the file is not a directory, open the file and pass it to the unittest generation function
-                content = f.read()
-            prompt = GENERATE_UNITTEST_PROMPT.format(content=content, code_file=files[pointer])
-            complete(prompt, output_path=files[pointer]+'-unittests', silent=args.silent)
-        pointer+=1
+def generate_unittests(files, silent=False):
+    with open(files[0], 'r') as f: 
+        content = f.read()
+    prompt = GENERATE_UNITTEST_PROMPT.format(content=content, code_file=files[0])
+    complete(prompt, output_path=files[1], silent=silent)
 
 def set_key(args):
     """
